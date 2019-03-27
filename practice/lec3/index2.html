@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .circle1 {
+            width: 50px;
+            height: 50px;
+            background-color: pink;
+            border-radius: 50%;
+        }
+
+        .circle {
+            height: 5vw;
+            width: 5vw;
+            background-color: pink;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .lefter {
+            top: 1vw;
+            right: 1vw;
+
+        }
+
+        .righter {
+            bottom: 1vw;
+            left: 1vw;
+        }
+
+        .cont {
+            position: relative;
+
+            margin: 0;
+            top: 10vh;
+            left: 10vw;
+
+            height: 15vw;
+            width: 40vw;
+            border-bottom-left-radius: 5%;
+            border-top-right-radius: 5%;
+            background-color: bisque;
+        }
+
+        .s1 {
+            float: left;
+            width: 20vh;
+            height: 20vh;
+            margin: 2vh;
+
+            background-color: cadetblue;
+        }
+
+        .t1 {
+            width: 0;
+            height: 0;
+            margin: 2vh;
+            float: left;
+            border: 10vh solid transparent;
+            border-bottom: 10vh solid lightseagreen;
+            border-left: 10vh solid lightseagreen;
+        }
+
+        .t2 {
+            width: 0;
+            height: 0;
+            margin: 2vh;
+            float: left;
+            border: 10vh solid transparent;
+            border-right: 10vh solid lightseagreen;
+            border-bottom: 10vh solid lightseagreen;
+        }
+
+        .task3 {
+            position: fixed;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="circle1"></div>
+
+    <div class="cont">
+        <div class="circle righter"></div>
+        <div class="circle lefter"></div>
+    </div>
+
+    <div class="task3">
+        <div class="s1"></div>
+        <div class="t1"></div>
+        <div class="s1"></div>
+        <div class="t2"></div>
+    </div>
+
+
+</body>
+
+</html>

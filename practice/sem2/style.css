@@ -1,0 +1,140 @@
+.higlighted {
+    background-color: yellow;
+}
+
+.redish {
+    color: red;
+    font-style: italic;
+    font-weight: bold;
+}
+
+p {
+    font-size: 2vw;
+}
+
+.info {
+    font-size: 2vh;
+    text-align: right;
+    margin-right: 2vw;
+}
+
+.higher {
+    font-size: 2.2vw;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.refer {
+    color: purple;
+    font-style: bold underline;
+}
+
+h1 {
+    font-size: 3vw;
+    margin: 0;
+}
+
+body {
+    background-color: lightcoral;
+    margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.logo-text {
+    font-size:10vh;
+    text-align: center;
+    margin:0;
+}
+
+.under {
+    font-style: underline;
+}
+
+
+.cross {
+    text-decoration: line-through;
+}
+
+
+a {
+    color: whitesmoke; 
+    font-size: 3vh;
+    text-shadow:
+    -1px -1px 0 rgb(116, 116, 116),
+    1px -1px 0 rgb(116, 116, 116),
+    -1px 1px 0 rgb(116, 116, 116),
+    1px 1px 0 rgb(116, 116, 116);  
+}
+
+a:hover {
+    color: rgb(227, 241, 236);
+}
+
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+
+    border: 2px;
+    border-bottom-right-radius: 5vh;
+    border-bottom-left-radius: 5vh;
+
+    background-color: lightblue;
+}
+
+
+footer {
+    position: fixed;
+    
+    width: 100%;
+    height: 10vh;
+    line-height: 5vh;
+    bottom: 0;
+
+    border: 2px;
+    border-top-left-radius: 2vh;
+    border-top-right-radius: 2vh;
+
+    background-color: palevioletred;
+}
+
+.menu-half {
+    position: relative;
+    float: left;
+    display: inline-block;
+
+    width: 50%;
+    height: 5vh;
+    line-height: 5vh;
+    background-color: lightskyblue;
+    
+
+    border: 2px;
+    border-radius: 5vh;
+
+    text-align: center;
+}
+
+.menu-half:hover {
+    background-color: rgb(187, 229, 255);
+}
+
+article {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    padding: 3vw;
+    width: 80vw;
+
+    background-color: whitesmoke;
+}

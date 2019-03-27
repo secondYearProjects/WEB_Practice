@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Page Title</title>
+    <style>
+        body {
+            padding: 16px;
+            white-space: nowrap;
+        }
+
+        .square {
+            margin: 0;
+            margin-left: -2px;
+
+            display: inline-block;
+            width: 4vw;
+            height: 4vw;
+
+            border: 1px solid rgb(53, 53, 53);
+        }
+
+        .black {
+            background-color: dimgray;
+        }
+
+        .white {
+            background-color: whitesmoke;
+        }
+
+        #chessboard {
+            margin-top: 20px;
+        }
+
+        .row {
+            margin: 0;
+            margin-top: 0px;
+            display: inline-block;
+        }
+    </style>
+
+</head>
+
+<body>
+    <input type="number" id="N" placeholder="N" min="0" value="8" oninput="validity.valid||(value='');">
+    <input type="number" id="M" placeholder="M" min="0" value="8" oninput="validity.valid||(value='');">
+    <button id="SubmitButton">Submit</button>
+    <div id="chessboard"></div>
+
+    <script>
+        var chessboard = document.getElementById('chessboard');
+        var NField = document.getElementById('N');
+        var MField = document.getElementById('M');
+
+        document.getElementById('SubmitButton').onclick = function () {
+            chessboard.innerHTML = '';
+
+            var n = Number(N.value);
+            var m = Number(M.value);
+
+
+            for (var i = 0; i < n; i++) {
+                var row = document.createElement('div');
+                row.classList.add('row');
+
+                for (var j = 0; j < m; j++) {
+                    var square = document.createElement('div');
+                    square.classList.add('square');
+
+                    if ((i + j) % 2 == 1)
+                        square.classList.add('black');
+                    else
+                        square.classList.add('white');
+
+                    row.appendChild(square);
+                }
+                chessboard.appendChild(row);
+                chessboard.appendChild(document.createElement("br"));
+            }
+        }
+
+    </script>
+</body>
+
+</html>

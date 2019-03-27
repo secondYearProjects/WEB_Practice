@@ -1,0 +1,203 @@
+body {
+    background-color: azure;
+    font-size: 0.8vw;
+}
+
+.page-block {
+    position:absolute;
+    width: 30vw;
+    min-height: 35vw;
+    height: fit-content;
+
+    background: url('images/seamless.png');
+    background-size: 20vh;
+
+    border-radius: .8vw;
+
+    box-shadow: 0.3vw 0.5vh 1vw 0.6vh #a4b6af;
+}
+
+.back-layer {
+    z-index: 1;
+}
+
+.front-layer {
+    z-index: 2;
+}
+
+.left-page {
+    left: 15vw;
+    top: 3vw;
+}
+
+.middle-page {
+    left:35vw;
+    top: 15vw;
+}
+
+.right-page {
+    right: 15vw;
+    top: 3vw;
+}
+
+
+.body-block {
+    width: 60%;
+    height: 100%;
+    float: left;
+
+    padding: 5%;
+}
+
+.left-block {
+    width: 24%;
+    height: 100%;
+    float: left;
+
+    padding: 3%;
+}
+
+
+.image-line {
+    width: 100%;
+    height: auto;
+
+    display: inline-block;
+}
+
+img.title {
+    width: 96%;
+    height: auto;
+    
+    border: 0.4vw solid aliceblue;
+}
+
+img.small {
+    object-fit: cover;
+    width: 2.5vw;
+    height: 2.5vw;
+
+    border: 0.2vw solid aliceblue;
+}
+
+img.article {
+    width: 40%;
+    height: auto;
+
+    float: left;
+
+    margin: 4%;
+    border: 0.2vw solid rgb(211, 234, 255);
+}
+
+figure.title {
+    width: 90%;
+    height: auto;
+   
+    padding: 5%;
+    margin: 3%;
+}
+
+figure.img {
+    width: 40%;
+    height: auto;
+    margin: 2%;
+    float: left;
+    align-content: center;
+}
+
+figcaption{
+    font-size: 0.5vw;
+    text-align: center;
+    background: aliceblue;
+    border-radius: .5vw;
+    
+}
+
+.content-block {
+    width: 100%;
+    height: 100px;
+    float: top;
+    
+}
+
+.menu-block {
+    width: 100%;
+    height: auto;
+    min-height: 4vh;
+    float:top;
+    margin: 0;
+
+    background-color: rgba(240, 248, 255, 0.815);
+    border-radius: .5vw;
+    padding-top: 1%;
+}
+
+.menu-button {
+    height: 4vh;
+    width: 30%;
+    margin-right: 2%;
+    float: left;
+    
+    text-align: center;
+    align-content: center;
+    vertical-align: middle;
+
+    background-color: rgb(190, 224, 252);
+    border-top-left-radius: .5vw;
+    border-top-right-radius: .5vw;
+
+}
+
+.menu-button[inactive=true]
+{
+    background-color: rgb(212, 230, 227);
+}
+
+.menu-button.filled {
+    background-color: rgb(116, 227, 235);
+}
+
+.menu-button.filled:hover, .menu-button.filled:hover[inactive=true] {
+    background-color: rgb(176, 233, 230);
+}
+
+.menu-button.filled[inactive=true] {
+    background-color: palegoldenrod;
+    color: palevioletred;
+}
+
+
+.article-block {
+    width: 90%;
+    padding: 5%;
+
+    float:top;
+
+    background-color: rgba(255, 255, 255, 0.767);
+    border-bottom-left-radius: .5vw;
+    border-bottom-right-radius: .5vw;
+    border-top-right-radius: .5vw;
+}
+
+
+
+a {
+    line-height: 4vh;
+    color:darkcyan;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a[active=true]{
+    color: palevioletred ;
+}
+
+a:hover {
+    color: fuchsia;
+    text-shadow: 5px 2px 10px rgb(162, 190, 94);
+}
+
+p {
+    font-size: 0.7vw;
+}

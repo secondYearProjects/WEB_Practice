@@ -1,0 +1,150 @@
+body{
+    background-color: white;
+}
+
+p {
+    font-size: 0.555vw;
+    padding-left: 0.5vw;
+    padding-top: 0.1vw;
+    padding-right: 0.5vw;
+    text-align:justify; 
+}
+
+h3 {
+    font-size: 0.555vw;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+    text-align:justify; 
+    font-weight: bold;
+}
+
+.header {
+    background-color: black;
+    width: 100%;
+    height: 5%;
+}
+
+img.icon {
+    margin-top: 6vh;
+    margin-bottom: 8vh;
+    width: 4vw;
+    height: 11vh;
+
+    transform: translate(4.5vw,0);
+
+    float:left;
+    
+    box-shadow: 0.3vw 0.5vw 0.3vw #161616;
+
+}
+
+img.small {
+    margin-top: 2vh;
+    width:10vw;
+    float: right;
+}
+
+img.full {
+    width: 20vw;
+    transform: translate(4vw,0);
+}
+
+.page {
+    width: 40vw;
+    height: 100vh;
+    background-color: rgb(172, 197, 226);
+    left: 0;
+    top: 0;
+    transform: translate(30vw,0);
+
+    
+}
+
+.right-poll {
+    position: relative;
+    height: 95%;
+    width: 30%;
+    background: rgba(165, 165, 165, 0.404);
+    float: left;
+}
+
+.text-block {
+    height: 95%;
+    width: 65%;
+    float: left;
+}
+
+.triangle-bottomright {
+    width: 0;
+    height: 0;
+    border-bottom: 100px solid red;
+    border-left: 100px solid transparent;
+}
+
+#triangle-bottomleft {
+    width: 0;
+    height: 0;
+    border-bottom: 100px solid red;
+    border-right: 100px solid transparent;
+}
+
+
+
+.trap-top{
+    top:5%;
+    z-index: 1;
+    float: left;
+}
+
+.trap-bot{
+    bottom: 0;
+    z-index: 1;
+    float: left;
+}
+
+.trap-top,.trap-bot{
+    width: 40vw;
+    height: 10vh;
+    position: absolute;
+    background:rgba(128, 128, 128, 0.473);
+}
+
+
+.trap-top:before{
+    content: '';
+    border-top: 1.5vw solid rgba(128, 128, 128, 0.473);
+    border-right: 40vw solid transparent;
+    border-bottom: 0vw;
+    border-left: 0vw;
+    position: absolute;
+    right: 0vw;
+    bottom: -1.5vw;
+    margin-top: 1.5vw;
+}
+
+.trap-bot:before{
+    content: '';
+    border-top: 0vw;
+    border-left: 40vw solid transparent;
+    border-bottom: 1.5vw solid rgba(128, 128, 128, 0.473);
+    border-right: 0vw;
+    position: absolute;
+    right: 0vw;
+    bottom: 10vh;
+    margin-top: 1.5vw;
+}
+
+.column {
+    float: left;
+    width: 49%;
+}
+
+.highlighted {
+    background-color: yellow;
+}
+
+li {
+    list-style-image: url(lst.png);
+    list-style-type: disc;
+    font-size: 0.955vw;
+}
