@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Page Title</title>
+    <style>
+        body {
+            padding: 0;
+            white-space: nowrap;
+        }
+
+        .square {
+            margin: 0;
+            margin-left: -0.01vw;
+
+            display: inline-block;
+            width: 4vw;
+            height: 4vw;
+
+            min-width: 20px;
+            min-height: 20px;
+
+            max-width: 50px;
+            max-height: 50px;
+
+            border: 0.01vw solid rgb(99, 99, 99);
+        }
+
+        .black {
+            background-color: dimgray;
+        }
+
+        .white {
+            background-color: whitesmoke;
+        }
+
+        #chessboard {
+            margin-top: 1vw;
+        }
+
+        .row {
+            margin-top: -5px;
+        }
+
+        input {
+            width: 5vw;
+            height: 2vw;
+            text-align: center;
+            font-size: 1.2vw;
+        }
+
+        p {
+            font-size: 1.5vw;
+        }
+
+        a {
+            font-size: 1.4vw;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Fields call auto update</p>
+    <a href="index2.html">Task 2 ---</a><br>
+    <!-- Task 1-->
+    <p>
+        N (height):
+        <input type="number" id="N" placeholder="N" min="0" max="400" step="1" value="8"
+            oninput="validity.valid||(value='');updateChessboard()">
+        M (width):
+        <input type="number" id="M" placeholder="M" min="0" max="400" step="1" value="8"
+            oninput="validity.valid||(value='');updateChessboard()">
+    </p>
+    <div id="chessboard"></div>
+
+    <script>
+        var chessboard = document.getElementById('chessboard');
+        var chessObject = 'square';
+
+        window.onload = function () { updateChessboard(); };
+
+        function updateChessboard() {
+            generateChessboard(chessboard, Number(N.value), Number(M.value), chessObject);
+        }
+
+        function generateChessboard(chessboard, n, m, element) {
+            chessboard.innerHTML = '';
+            for (var i = 0; i < n; i++)
+                chessboard.appendChild(createRow(m, i, element));
+        }
+
+        function createRow(number, i, element) {
+            var row = document.createElement('div');
+            row.classList.add('row');
+
+            for (var j = 0; j < number; j++) {
+                var square = document.createElement('div');
+                square.classList.add(element);
+
+                if ((i + j) % 2 == 1)
+                    square.classList.add('black');
+                else
+                    square.classList.add('white');
+
+                row.appendChild(square);
+            }
+            return row;
+        }
+    </script>
+</body>
+
+</html>

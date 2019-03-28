@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Page Title</title>
+    <style>
+        body {
+            padding: 0;
+            white-space: nowrap;
+        }
+
+        .square {
+            margin: 0;
+            margin-left: -0.01vw;
+
+            display: inline-block;
+            width: 4vw;
+            height: 4vw;
+
+            min-width: 20px;
+            min-height: 20px;
+
+            max-width: 50px;
+            max-height: 50px;
+
+            border: 0.01vw solid rgb(99, 99, 99);
+        }
+
+        .black {
+            background-color: dimgray;
+        }
+
+        .white {
+            background-color: whitesmoke;
+        }
+
+        #chessboard {
+            margin-top: 1vw;
+        }
+
+        .row {
+            margin-top: -5px;
+        }
+
+        input {
+            width: 5vw;
+            height: 2vw;
+            text-align: center;
+            font-size: 1.2vw;
+        }
+
+        p {
+            font-size: 1.5vw;
+        }
+
+        a {
+            font-size: 1.4vw;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Fields call auto update</p>
+    <a href="index1.html">--- Task 1</a><br>
+    <!-- Task 2-->
+    <p>P1: (
+        <input type="number" id="x1" value="0.0" placeholder="x1" step="0.01" oninput="pointChanged()">
+        ,
+        <input type="number" id="y1" value="0.0" placeholder="y1" step="0.01" oninput="pointChanged()">
+        )
+    </p>
+    <p>P2: (
+        <input type="number" id="x2" value="0.0" placeholder="x2" step="0.01" oninput="pointChanged()">
+        ,
+        <input type="number" id="y2" value="0.0" placeholder="y2" step="0.01" oninput="pointChanged()">
+        )
+    </p><br>
+
+    <p id="answer"></p>
+
+
+    <script>
+        window.onload = function () { pointChanged(); };
+
+        function NumVal(fieldId) {
+            return Number(document.getElementById(fieldId).value);
+        }
+
+        var answerParagraph = document.getElementById('answer');
+
+        function pointChanged() {
+            var x1 = NumVal('x1');
+            var y1 = NumVal('y1');
+
+            var x2 = NumVal('x2');
+            var y2 = NumVal('y2');
+
+            if (isAxis(x1, y1) || isAxis(x2, y2))
+                answerParagraph.innerHTML = pointInfo(x1, y1, "P1") + ", " + pointInfo(x2, y2, "P2");
+            else {
+                var q1 = quarter(x1, y1);
+                var q2 = quarter(x2, y2);
+                if (q1 == q2)
+                    answerParagraph.innerHTML = "P1, P2 lay at the same quarter, Distance: " + distance(x1, y1, x2, y2).toString();
+                else {
+                    answerParagraph.innerHTML = pointInfo(x1, y1, "P1") + ", " + pointInfo(x2, y2, "P2");
+                }
+            }
+        }
+
+        function pointInfo(x, y, pointName) {
+            var res = "";
+
+            if (x == 0 && y == 0)
+                res += pointName + " lays at the center ";
+            else {
+                if (x == 0)
+                    res += pointName + " lays on OX ";
+                else if (y == 0)
+                    res += pointName + " lays on OY ";
+                else {
+                    res += pointName + " lays at " + quarter(x, y).toString() + " quarter ";
+                }
+            }
+            return res;
+        }
+
+        function distance(x1, y1, x2, y2) {
+            return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2)).toFixed(4);
+        }
+
+        function quarter(x, y) {
+            if (x > 0) {
+                if (y > 0)
+                    return 1;
+                return 4;
+            }
+            if (y > 0)
+                return 2;
+            return 3;
+        }
+
+        function isAxis(x, y) {
+            return ((x == 0) || (y == 0));
+        }
+    </script>
+</body>
+
+</html>
