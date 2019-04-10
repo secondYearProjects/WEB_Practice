@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>lec6</title>
+
+    <style>
+        body {
+            background-color: whitesmoke;
+            font-size: 1.2vw;
+        }
+
+        input {
+            height: 3vh;
+            font-size: 1.2vw;
+            border-radius: 0.5vw;
+            ;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Цiна: <input type="number" step="0.01" id="price" value="0.0"></p>
+    <p>Кiлькiсть: <input type="number" step="1" id="count" value="0"></p>
+    <br>
+    <input type="button" value="Пiдрахувати" onclick="update()">
+    <p>Сума: </p> <span id="result"></span>
+
+    <script>
+        window.onload = function () {
+            update();
+        }
+
+        var price = document.getElementById("price");
+        var count = document.getElementById("count");
+        var result = document.getElementById("result");
+
+        function update() {
+            var sum = parseFloat(price.value) * parseInt(count.value);
+            var hryvnas = parseInt(Math.floor(sum));
+            var cents = parseInt(Math.floor((sum - hryvnas).toFixed(2) * 100));
+            result.innerHTML = hryvnas.toString() + strHr(hryvnas) + cents.toString() + strCop(cents);
+        }
+
+        var hrM = ["ень", "ня", "нi", "нi", "нi", "ень", "ень", "ень", "ень", "ень"];
+        function strHr(hrn) {
+            var res = " грив";
+            var last = hrn % 10;
+            res += hrM[last];
+            if (hrn > 10 && hrn < 20){
+                return " гривень ";
+            }
+            return res + " ";
+        }
+
+        var copM = ["ок","ка","ки","ки","ки","ок","ок","ок","ок","ок"];
+        function strCop(cop) {
+
+            var res = " копiй";
+            var last = cop % 10;
+            res += copM[last];
+            if (cop > 10 && cop < 20){
+                return " копiйок ";
+            }
+            return res + " ";
+        }
+
+    </script>
+</body>
+
+</html>

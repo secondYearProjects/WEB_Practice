@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Page Title</title>
+    <style>
+        body {
+            padding: 32px;
+        }
+
+        p,
+        span {
+            font-size: 16pt;
+        }
+
+        .box {
+            background-color: whitesmoke;
+            width: 100%;
+            min-height: 30px;
+            border: 2px gray solid;
+            padding: 8px;
+
+        }
+
+        .right {
+            text-align: right;
+        }
+
+        .middle {
+            text-align: center;
+        }
+
+        .currency::before {
+            content: '₴ ';
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box middle">
+        <p>Замовлення на придбання товару</p>
+    </div>
+    <div class="box">
+        <p>Назва товару: <select id="books"></select></p>
+    </div>
+    <div class="box">
+        <p>Кiлькiсть: <input type="number" step="1" id="count">
+            Вартiсть змамовлених книг: <p id="booksPrice"></p>
+        </p>
+    </div>
+    <div class="box">Спосiб доставки замовлення:
+        <form>
+            <label><input type="radio" name="delivery" value="postal"> Поштою</label><br>
+            <label><input type="radio" name="delivery" value="home"> Достава додому</label><br>
+        </form>
+        <label><input type="checkbox" name="present" value="present"> У святковiй упаковцi</label>
+    </div>
+    <div class="box right">
+        <span>Загальна вартiсть замовлення: <span class="currency" id="total"></p>
+            </span>
+        </span>
+
+    </div>
+    <div class="box">
+        <p>Данi замовника</p>
+        <p>Iм`я: <input id="name"> Адреса: <input id="adress"></p>
+    </div>
+    <div class="box"><input type="button" value="Вiдновити початковi значення полiв"> <input type="button"
+            value="Вiдiслати данi"></div>
+
+
+    <script>
+        window.onload = function () {
+
+        }
+
+        function addBooks() {
+            var list = document.getElementById("books");
+            var bookList = [{ Name: "Tata", Price: "12" }, { Name: "Papa", Price: "228" }, { Name: "Lala", Price: "14" }, { Name: "Lolo", Price: "111" }];
+            bookList.forEach(book => {
+                var el = book.Name + " " + book.Price;
+                //list.innerHTML += "<option value=\"" + el + "\">" + el + "</option>";
+                list.innerHTML += "<option></option>";
+            });
+        }
+    </script>
+</body>
+
+</html>
