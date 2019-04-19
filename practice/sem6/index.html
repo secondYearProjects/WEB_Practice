@@ -88,7 +88,7 @@
         </div>
         <div class="box">
             <p>Данi замовника</p>
-            <p>Iм`я: <input id="customer" value=""> Адреса: <input id="adress" value=""></p>
+            <p>Iм`я: <input id="customer" value=""> Адреса: <input id="address" value=""></p>
         </div>
         <div class="box right">
             <input type="button" value="Вiдновити початковi значення полiв" onclick="refresh();">
@@ -115,7 +115,7 @@
         var booksPrice = document.getElementById("booksPrice");
 
         var customer = document.getElementById("customer");
-        var adress = document.getElementById("adress");
+        var address = document.getElementById("address");
 
         var Info = document.getElementById("Info");
 
@@ -165,19 +165,19 @@
             check.innerHTML = "";
             document.getElementById("mainForm").reset();
             name.value = "";
-            adress.value = "";
+            address.value = "";
             calculate();
         }
 
         function sendData() {
             Info.innerHTML = "";
-            if (customer.value == "" || adress.value == "") {
+            if (customer.value == "" || address.value == "") {
                 if (customer.value == "") {
                     var message = "Name field is empty ";
                     Info.innerHTML += message;
                 }
-                if (adress.value == "") {
-                    message = "Adress field is empty ";
+                if (address.value == "") {
+                    message = "address field is empty ";
                     Info.innerHTML += message;
                 }
             }
@@ -225,7 +225,7 @@
             res.push("Total price: " + total.innerHTML);
 
             res.push("Name: " + customer.value);
-            res.push("Adress: " + adress.value);
+            res.push("address: " + address.value);
 
             return res;
         }
