@@ -7,11 +7,13 @@
     <style>
         body {
             padding: 32px;
+            margin: 5px;
         }
 
         p,
         span {
             font-size: 16pt;
+            padding: 5px;
         }
 
         .box {
@@ -50,6 +52,8 @@
             width: min-content;
             height: min-content;
 
+            margin: 5px;
+
             background-color: rgb(219, 219, 219);
         }
     </style>
@@ -64,25 +68,35 @@
             <p>Назва товару: <select id="books" onchange="calculate();"></select></p>
         </div>
         <div class="box">
-            <p>Кiлькiсть: <input type="number" step="1" id="count" value="0" min="0" onchange="calculate();">
+            <p>Кiлькiсть: <input type="number" step="1" id="count" value="1" min="1" onchange="calculate();">
                 Вартiсть змамовлених книг: <span id="booksPrice" class="currency">0.00</span>
             </p>
         </div>
         <div class="box">Спосiб доставки замовлення:<br>
             <form>
                 <label><input type="radio" name="delivery" value="postal" checked="true" id="post"
-                        onchange="calculate();">
+                        onchange="updateDeliveryFields();">
                     Поштою</label><br>
-                <label><input type="radio" name="delivery" value="home" id="home" onchange="calculate();"> Достава
+                <label><input type="radio" name="delivery" value="home" id="home" onchange="updateDeliveryFields();">
+                    Доставка
                     додому</label><br>
+                <div id="otherDiv">
+                    <label><input type="radio" name="delivery" value="other" id="other"
+                            onchange="updateDeliveryFields();">
+                        Iнше
+                    </label><br>
+                </div>
             </form>
+
             <label><input type="checkbox" name="present" value="present" id="present" onchange="calculate();"> У
-                святковiй
-                упаковцi</label>
+                святковiй упаковцi
+            </label>
+
         </div>
         <div class="box right">
-            <span>Загальна вартiсть замовлення: <span class="currency" id="total">0.00</span><input type="button"
-                    value="Пiдрахувати" onclick="calculate();">
+            <span>Вартiсть замовлення: <span class="currency" id="total">0.00</span>
+                <input type="button" value="Додати то чеку" onclick="addBookToCheck();">
+                <p class="attention" id="checkInfo"></p>
             </span>
 
         </div>
@@ -99,9 +113,6 @@
         <div class="check" id="check"></div>
     </form>
 
-
-
-
     <script>
         var list = document.getElementById("books");
         var number = document.getElementById("count");
@@ -110,6 +121,7 @@
 
         var post = document.getElementById("post");
         var home = document.getElementById("home");
+        var other = document.getElementById("other");
         var present = document.getElementById("present");
 
         var booksPrice = document.getElementById("booksPrice");
@@ -117,6 +129,7 @@
         var customer = document.getElementById("customer");
         var address = document.getElementById("address");
 
+        var checkInfo = document.getElementById("checkInfo");
         var Info = document.getElementById("Info");
 
         var check = document.getElementById("check");
@@ -160,7 +173,8 @@
                 result *= 1.1;
             else if (home.checked)
                 result *= 1.15;
-
+            else if (other.checked)
+                result *= 2.0;
 
             total.innerHTML = result.toFixed(2).toString();
         }
@@ -171,22 +185,15 @@
             totalOrderPrice = 0;
 
             document.getElementById("mainForm").reset();
-            name.value = "";
+            customer.value = "";
             address.value = "";
             calculate();
         }
 
-        function sendData() {
-            Info.innerHTML = "";
-            if (customer.value == "" || address.value == "") {
-                if (customer.value == "") {
-                    var message = "Name field is empty ";
-                    Info.innerHTML += message;
-                }
-                if (address.value == "") {
-                    message = "address field is empty ";
-                    Info.innerHTML += message;
-                }
+        function addBookToCheck() {
+            checkInfo.innerHTML = "";
+            if (other.checked && otherInput.value == "") {
+                checkInfo.innerHTML = "Please choose `Other` option";
             }
             else {
                 addSelectedBook();
@@ -194,17 +201,46 @@
             }
         }
 
+        function sendData() {
+            Info.innerHTML = "";
+            if (customer.value == "" || address.value == "" || check.innerHTML == "") {
+                if (customer.value == "") {
+                    var message = "Name field is empty ";
+                    Info.innerHTML += message;
+                }
+                if (address.value == "") {
+                    message = "Address field is empty ";
+                    Info.innerHTML += message;
+                }
+                if (check.innerHTML == "") {
+                    message = "Nothing is ordered yet ";
+                    Info.innerHTML += message;
+                }
+            }
+            else {
+                var customerInfo = document.createElement("p");
+                customerInfo.style = "padding-left: 10px;";
+                customerInfo.innerHTML = "Customer name: " + customer.value + "<br>";
+                customerInfo.innerHTML += "Adress: " + address.value;
+
+                check.appendChild(customerInfo);
+            }
+        }
+
         function buyList() {
             var res = [];
             res.push("Book: " + bookList[list.value].Name);
             res.push("Single book price: " + bookList[list.value].Price);
-            res.push("Qantity: " + number.value);
+            res.push("Quantity: " + number.value);
             res.push("Total books price: " + booksPrice.innerHTML);
             var delivery = "";
             if (post.checked)
                 delivery = "By post";
-            else
+            else if (home.checked)
                 delivery = "To home";
+            else
+                delivery = "Other: " + document.getElementById("otherInput").value;
+
 
             var wrapping = "";
             if (present.checked)
@@ -213,13 +249,8 @@
                 wrapping = "No";
 
             res.push("Delivery type: " + delivery);
-
             res.push("Needs present wrapping: " + wrapping);
-
-            res.push("Total price: " + total.innerHTML);
-
-            res.push("Name: " + customer.value);
-            res.push("address: " + address.value);
+            res.push("<b>Order price: " + total.innerHTML + "<b>");
 
             return res;
         }
@@ -230,11 +261,15 @@
         }
 
         function updateCheck() {
-
             check.innerHTML = "";
 
+            var orderCounter = 0;
+
             selectedBooks.forEach(checkList => {
+                orderCounter++;
+
                 var checkListHTML = document.createElement("ul");
+                checkListHTML.innerHTML = "<i>Order #" + Number(orderCounter) + "<i>";
                 check.appendChild(checkListHTML);
 
                 checkList.forEach(item => {
@@ -243,18 +278,30 @@
                     checkListHTML.appendChild(listItem);
                 })
             });
-            var totalField = document.createElement("h2");
-            totalField.innerHTML = "Total order: " + totalOrderPrice;
+            var totalField = document.createElement("p");
+            totalField.style = "padding-left: 10px;";
+            totalField.innerHTML = "Total order: " + "<b>" + totalOrderPrice + "<b>";
             check.appendChild(totalField);
         }
 
-        function calculateTotalPrice() {
-            selectedBooks.forEach(book => {
+        var otherDiv = document.getElementById("otherDiv");
+        var otherInput;
 
-            });
+        function updateDeliveryFields() {
+            calculate();
+
+            if (other.checked) {
+                otherInput = document.createElement("input");
+                otherInput.setAttribute("type", "text");
+                otherInput.setAttribute("id", "otherInput");
+                otherDiv.appendChild(otherInput);
+            }
+            else {
+                if (otherInput != null && otherDiv.contains(otherInput))
+                    otherDiv.removeChild(otherInput);
+            }
+
         }
-
-
     </script>
 </body>
 
