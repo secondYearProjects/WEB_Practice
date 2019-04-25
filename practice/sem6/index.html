@@ -121,6 +121,10 @@
 
         var check = document.getElementById("check");
 
+        var selectedBooks = [];
+
+        var totalOrderPrice = 0;
+
 
         var bookList = [
             { Name: "Modern C++", Price: "128.12" },
@@ -163,6 +167,9 @@
 
         function refresh() {
             check.innerHTML = "";
+            selectedBooks = [];
+            totalOrderPrice = 0;
+
             document.getElementById("mainForm").reset();
             name.value = "";
             address.value = "";
@@ -182,22 +189,9 @@
                 }
             }
             else {
-                printCheck();
+                addSelectedBook();
+                updateCheck();
             }
-        }
-
-        function printCheck() {
-            check.innerHTML = "";
-
-            var checkListHTML = document.createElement("ul");
-            check.appendChild(checkListHTML);
-
-            var checkList = buyList();
-            checkList.forEach(item => {
-                var listItem = document.createElement("li");
-                listItem.innerHTML = item;
-                checkListHTML.appendChild(listItem);
-            })
         }
 
         function buyList() {
@@ -228,6 +222,36 @@
             res.push("address: " + address.value);
 
             return res;
+        }
+
+        function addSelectedBook() {
+            selectedBooks.push(buyList());
+            totalOrderPrice += Number(total.innerHTML);
+        }
+
+        function updateCheck() {
+
+            check.innerHTML = "";
+
+            selectedBooks.forEach(checkList => {
+                var checkListHTML = document.createElement("ul");
+                check.appendChild(checkListHTML);
+
+                checkList.forEach(item => {
+                    var listItem = document.createElement("li");
+                    listItem.innerHTML = item;
+                    checkListHTML.appendChild(listItem);
+                })
+            });
+            var totalField = document.createElement("h2");
+            totalField.innerHTML = "Total order: " + totalOrderPrice;
+            check.appendChild(totalField);
+        }
+
+        function calculateTotalPrice() {
+            selectedBooks.forEach(book => {
+
+            });
         }
 
 
