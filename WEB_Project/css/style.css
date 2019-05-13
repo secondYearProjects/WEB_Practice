@@ -420,7 +420,7 @@ html, body {
   -webkit-box-flex: 0;
   -webkit-flex: none;
   -ms-flex: none;
-  flex: none;
+  flex: 0 0 auto;
   color: #f6f6f6;
 }
 
@@ -436,6 +436,7 @@ html, body {
   height: fit-content;
   min-width: 1000px;
   max-width: 1000px;
+  flex: 1 0 auto;
 }
 
 .container {
@@ -457,7 +458,6 @@ html, body {
   flex: 0 0 auto;
   order: 0;
 }
-
 
 .shopItem {
   position: relative;
