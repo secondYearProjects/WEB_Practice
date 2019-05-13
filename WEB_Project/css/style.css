@@ -369,9 +369,10 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'PT Sans', sans-serif;
+  text-align: justify;
   font-size: 14px;
-  line-height: 1.4;
+  line-height: 22px;
   color: #767676;
   background-color: #fff;
 }
@@ -401,6 +402,7 @@ html, body {
   -webkit-flex: none;
   -ms-flex: none;
   flex: none;
+  color: #f6f6f6;
 }
 
 .slider {
@@ -419,16 +421,19 @@ html, body {
   -webkit-flex: none;
   -ms-flex: none;
   flex: none;
+  color: #f6f6f6;
 }
 
 .footer.description {
   height: fit-content;
+  color: #767676;
+  background-color: transparent;
 }
 
 .content-wrapper {
   margin: 0 auto;
   flex-direction: column;
-  height: 100%;
+  height: fit-content;
   min-width: 1000px;
   max-width: 1000px;
 }
@@ -451,4 +456,52 @@ html, body {
   background: #FFD399;
   flex: 0 0 auto;
   order: 0;
+}
+
+
+.shopItem {
+  position: relative;
+  float: left;
+  margin-left: 10px;
+  margin-top: 10px;
+  width: 250px;
+  height: 380px;
+  background-color: #dbdbdb;
+}
+
+.shopItem>img {
+  padding-top: 20px;
+  height: 212px;
+  width: 212px;
+  display: block;
+  margin: auto;
+}
+
+.shopItem>p {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.shopInfo {
+  background-color: rgba(58, 111, 216, 0.067);
+  vertical-align: bottom;
+  width: 100%;
+}
+
+.shopInfo>p.price {
+  display: inline-block;
+  margin: auto;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.shopInfo>p.price::after {
+  content: " $";
+}
+
+.shopInfo>img {
+  display: inline-block;
+  margin: auto;
+  height: auto;
+  width: auto;
 }
