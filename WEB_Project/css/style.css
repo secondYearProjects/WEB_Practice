@@ -9,10 +9,8 @@
  */
 
 html {
-  line-height: 1.15;
-  /* 1 */
-  -webkit-text-size-adjust: 100%;
-  /* 2 */
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
 }
 
 /* Sections
@@ -45,12 +43,9 @@ h1 {
  */
 
 hr {
-  box-sizing: content-box;
-  /* 1 */
-  height: 0;
-  /* 1 */
-  overflow: visible;
-  /* 2 */
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
 }
 
 /**
@@ -59,10 +54,8 @@ hr {
  */
 
 pre {
-  font-family: monospace, monospace;
-  /* 1 */
-  font-size: 1em;
-  /* 2 */
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
 }
 
 /* Text-level semantics
@@ -82,19 +75,17 @@ a {
  */
 
 abbr[title] {
-  border-bottom: none;
-  /* 1 */
-  text-decoration: underline;
-  /* 2 */
-  text-decoration: underline dotted;
-  /* 2 */
+  border-bottom: none; /* 1 */
+  text-decoration: underline; /* 2 */
+  text-decoration: underline dotted; /* 2 */
 }
 
 /**
  * Add the correct font weight in Chrome, Edge, and Safari.
  */
 
-b, strong {
+b,
+strong {
   font-weight: bolder;
 }
 
@@ -103,11 +94,11 @@ b, strong {
  * 2. Correct the odd `em` font sizing in all browsers.
  */
 
-code, kbd, samp {
-  font-family: monospace, monospace;
-  /* 1 */
-  font-size: 1em;
-  /* 2 */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
 }
 
 /**
@@ -123,7 +114,8 @@ small {
  * all browsers.
  */
 
-sub, sup {
+sub,
+sup {
   font-size: 75%;
   line-height: 0;
   position: relative;
@@ -157,15 +149,15 @@ img {
  * 2. Remove the margin in Firefox and Safari.
  */
 
-button, input, optgroup, select, textarea {
-  font-family: inherit;
-  /* 1 */
-  font-size: 100%;
-  /* 1 */
-  line-height: 1.15;
-  /* 1 */
-  margin: 0;
-  /* 2 */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
 }
 
 /**
@@ -173,8 +165,8 @@ button, input, optgroup, select, textarea {
  * 1. Show the overflow in Edge.
  */
 
-button, input {
-  /* 1 */
+button,
+input { /* 1 */
   overflow: visible;
 }
 
@@ -183,8 +175,8 @@ button, input {
  * 1. Remove the inheritance of text transform in Firefox.
  */
 
-button, select {
-  /* 1 */
+button,
+select { /* 1 */
   text-transform: none;
 }
 
@@ -192,7 +184,10 @@ button, select {
  * Correct the inability to style clickable types in iOS and Safari.
  */
 
-button, [type="button"], [type="reset"], [type="submit"] {
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
   -webkit-appearance: button;
 }
 
@@ -200,7 +195,10 @@ button, [type="button"], [type="reset"], [type="submit"] {
  * Remove the inner border and padding in Firefox.
  */
 
-button::-moz-focus-inner, [type="button"]::-moz-focus-inner, [type="reset"]::-moz-focus-inner, [type="submit"]::-moz-focus-inner {
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
@@ -209,7 +207,10 @@ button::-moz-focus-inner, [type="button"]::-moz-focus-inner, [type="reset"]::-mo
  * Restore the focus styles unset by the previous rule.
  */
 
-button:-moz-focusring, [type="button"]:-moz-focusring, [type="reset"]:-moz-focusring, [type="submit"]:-moz-focusring {
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
@@ -229,18 +230,12 @@ fieldset {
  */
 
 legend {
-  box-sizing: border-box;
-  /* 1 */
-  color: inherit;
-  /* 2 */
-  display: table;
-  /* 1 */
-  max-width: 100%;
-  /* 1 */
-  padding: 0;
-  /* 3 */
-  white-space: normal;
-  /* 1 */
+  box-sizing: border-box; /* 1 */
+  color: inherit; /* 2 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  white-space: normal; /* 1 */
 }
 
 /**
@@ -264,18 +259,18 @@ textarea {
  * 2. Remove the padding in IE 10.
  */
 
-[type="checkbox"], [type="radio"] {
-  box-sizing: border-box;
-  /* 1 */
-  padding: 0;
-  /* 2 */
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
 }
 
 /**
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
 
-[type="number"]::-webkit-inner-spin-button, [type="number"]::-webkit-outer-spin-button {
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
 
@@ -285,10 +280,8 @@ textarea {
  */
 
 [type="search"] {
-  -webkit-appearance: textfield;
-  /* 1 */
-  outline-offset: -2px;
-  /* 2 */
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
 }
 
 /**
@@ -305,10 +298,8 @@ textarea {
  */
 
 ::-webkit-file-upload-button {
-  -webkit-appearance: button;
-  /* 1 */
-  font: inherit;
-  /* 2 */
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
 }
 
 /* Interactive
@@ -350,177 +341,90 @@ template {
 }
 
 * {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .clearfix:after {
-  content: "";
-  display: block;
-  clear: both;
+    content: "";
+    display:block;
+    clear: both;
 }
 
 html {
-  min-width: 800px;
+    min-width: 800px;
 }
 
 html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: 'PT Sans', sans-serif;
-  font-size: 14px;
-  line-height: 22px;
-  color: #666666;
-  background-color: #fff;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #333;
+    background-color: #fff;
 }
 
 .header, .content-wrapper, .container, .content, .footer {
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flex;
-  display: -o-flex;
-  display: flex;
-  flex-direction: row;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-direction: row;
 }
 
 .header {
-  height: 230px;
-  background: #6CAEDD;
-  color: #fff;
-  -webkit-box-flex: 0;
-  -webkit-flex: none;
-  -ms-flex: none;
-  flex: none;
-}
-
-.main-menu {
-  height: 80px;
-  background: rgb(121, 121, 121);
-  color: #fff;
-  -webkit-box-flex: 0;
-  -webkit-flex: none;
-  -ms-flex: none;
-  flex: none;
-}
-
-.slider {
-  height: 400px;
-  background: rgb(179, 165, 165);
-  color: #fff;
-  -webkit-box-flex: 0;
-  -webkit-flex: none;
-  -ms-flex: none;
-  flex: none;
+    height: 230px;
+    background: #6CAEDD;
+    color: #fff;
+    -webkit-box-flex: 0;
+    -webkit-flex: none;
+    -ms-flex: none;
+    flex: none;
 }
 
 .footer {
-  height: 225px;
-  background: #364850;
-  color: #fff;
-  -webkit-box-flex: 0;
-  -webkit-flex: none;
-  -ms-flex: none;
-  flex: none;
-}
-
-.content-footer {
-  height: 270px;
-  background: #364850;
-  color: #fff;
-  -webkit-box-flex: 0;
-  -webkit-flex: none;
-  -ms-flex: none;
-  flex: none;
+    height: 225px;
+    background: #364850;
+    color: #fff;
+    -webkit-box-flex: 0;
+    -webkit-flex: none;
+    -ms-flex: none;
+    flex: none;
 }
 
 .content-wrapper {
-  margin: 0 auto;
-  flex-direction: column;
-  height: 100%;
-  min-width: 800px;
-  max-width: 1400px;
+    margin: 0 auto;
+    flex-direction: column;
+    height: 100%;
+    min-width: 800px;
+    max-width: 1400px;
 }
 
 .container {
-  flex-wrap: nowrap;
-  flex: 1 0 auto;
+    flex-wrap: nowrap;
+    flex: 1 0 auto;
 }
 
 .content {
-  width: 100%;
-  flex-direction: column;
-  flex: 1 1 auto;
-  order: 1;
-  order: 0;
+    width: 100%;
+    flex-direction: column;
+    flex: 1 1 auto;
+    order: 1;
+    order: 0;
 }
 
 .sidebar {
-  background: #FFD399;
-  flex: 0 0 auto;
-  order: 0;
+    background: #FFD399;
+    flex: 0 0 auto;
+    order: 0;
 }
 
 .sidebar1 {
-  width: 210px;
-  order: 0;
+    width: 70px;
+    order: 1;
 }
 
-.shopItem {
-  position: relative;
-  float: left;
-  margin-left: 20px;
-  margin-top: 20px;
-  width: 250px;
-  height: 380px;
-  background-color: #dbdbdb;
-}
-
-.shopItem>img {
-  padding-top: 20px;
-  height: 212px;
-  width: 212px;
-  display: block;
-  margin: auto;
-}
-
-.shopItem>p {
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.shopInfo {
-  background-color: rgba(58, 111, 216, 0.067);
-  vertical-align: bottom;
-  width: 100%;
-}
-
-.shopInfo>p.price {
-  display: inline-block;
-  margin: auto;
-  font-size: 28px;
-  font-weight: 600;
-}
-
-.shopInfo>p.price::after {
-  content: " $";
-}
-
-.shopInfo>img {
-  display: inline-block;
-  margin: auto;
-  height: auto;
-  width: auto;
-}
-
-.column {
-  display: inline-block;
-  margin: auto;
-  width: 230px;
-  padding-top: 20px;
-}
-
-a {
-  color: #666666;
-}
