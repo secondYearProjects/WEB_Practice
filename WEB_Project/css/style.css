@@ -434,7 +434,6 @@ html, body {
   margin: 0 auto;
   flex-direction: column;
   height: fit-content;
-  min-width: 1000px;
   max-width: 1000px;
   flex: 1 0 auto;
 }
@@ -504,4 +503,17 @@ html, body {
   margin: auto;
   height: auto;
   width: auto;
+}
+
+ul.menu-top {
+  margin: auto;
+  color: #ffffff;
+  font-size: 30px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+ul.menu-top>li {
+  display: inline;
+  list-style: none;
+  padding: 5px;
 }
