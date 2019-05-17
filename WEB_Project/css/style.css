@@ -386,6 +386,11 @@ html, body {
   flex-direction: row;
 }
 
+.main-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .header {
   height: 230px;
   background: #6CAEDD;
