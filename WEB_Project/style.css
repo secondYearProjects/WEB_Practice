@@ -16,6 +16,24 @@ body {
     height: 100%;
 }
 
+a:link {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+a:visited {
+    color: rgb(255, 255, 255);
+}
+
+a:hover {
+    color: #ececec;
+    border-bottom: .07em solid;
+}
+
+a:active {
+    color: rgb(214, 214, 214);
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -35,11 +53,27 @@ body {
 
 header {
     flex: 0 0 230px;
-    background-color: yellow;
+    background-color: #fdfdfd;
     display: flex;
     flex-direction: row;
     align-items: stretch;
     align-content: stretch;
+}
+
+.main-menu {
+    flex: 0 0 80px;
+    background-color: #767676;
+    color: #ffffff;
+    font-size: 30px;
+    font-family: "Times New Roman", Times, serif;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.slider {
+    flex: 0 0 400px;
+    background-color: #f9f9f9;
 }
 
 .main-content {
@@ -50,17 +84,64 @@ header {
 }
 
 footer {
-    background-color: blue;
-    flex: 0 0 auto;
+    background-color: #767676;
+    flex: 0 0 220px;
     display: flex;
     flex-direction: row;
 }
 
-.company-name, .company-contacts {
-    flex: 1 0 30%;
+.company-contacts, .company-name {
     max-width: 300px;
+    min-width: 300px;
 }
 
 .company-name {
+    display: flex;
+    flex-direction: row;
+}
+
+.company-name>img {
+    width: 100px;
+    height: 100px;
+    margin-right: auto;
+}
+
+.text-group {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.company-name>.text-group>p.title {
     font-size: 26px;
+    font-weight: bold;
+}
+
+.company-name>.text-group>p.slogan {
+    margin-top: 10px;
+}
+
+.company-contacts {
+    margin-left: auto;
+    text-align: right;
+}
+
+.company-contacts>.text-group>p {
+    font-stretch: ultra-condensed;
+    font-size: 30px;
+    transform: scaleY(1.2);
+    font-family: 'Open Sans', sans-serif;
+}
+
+.main-menu ul {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin: auto;
+}
+
+.main-menu ul li {
+    list-style: none;
+    flex: 0 0 auto;
+    margin-left: 10px;
 }
