@@ -102,24 +102,35 @@
         "images/cover6.jpg",
     ]
     let slider = document.getElementById("slider");
-    sliderImages.forEach(function (item, i) {
-        let newImg = document.createElement("img");
-        newImg.src = item;
-        newImg.id = "img" + String(i + 1);
-        slider.appendChild(newImg);
-    });
 
+    function addImages() {
+        sliderImages.forEach(function (item, i) {
+            let newImg = document.createElement("img");
+            newImg.src = item;
+            newImg.id = "img" + String(i + 1);
+            slider.appendChild(newImg);
+        });
+    }
+
+    //addImages();
 
     //let sc = sliderImages.length;
+    let totalImages = sliderImages.length;
     let current = 0;
 
     function showNext() {
+        slider.innerHTML = "";
+        newImage = document.createElement("img");
+        current = (current == totalImages) ? 1 : ++current;
+        newImage.src = "images/cover" + current + ".jpg";
 
+        slider.appendChild(newImage);
     }
+    showNext();
     let sc = $("#slider img").length;
     let count = 0;
     let processing = false;
-    nextSlide();
+    //nextSlide();
 
 
 
@@ -128,7 +139,7 @@
             count = (count == sc) ? 1 : ++count;
             let time = 4000;
             let fade = 800;
-            $("#slider #img" + count).fadeIn(fade).delay(time - 2 * fade).fadeOut(fade);
+            //$("#slider #img" + count).fadeIn(fade).delay(time - 2 * fade).fadeOut(fade);
             processing = true;
             setTimeout(nextSlide, time);
             processing = false;
@@ -139,7 +150,7 @@
         count = (count == 1) ? sc : --count;
         let time = 4000;
         let fade = 800;
-        $("#slider #img" + count).fadeIn(fade).delay(time - 2 * fade).fadeOut(fade);
+        //$("#slider #img" + count).fadeIn(fade).delay(time - 2 * fade).fadeOut(fade);
         setTimeout(nextSlide, time);
     }
 </script>

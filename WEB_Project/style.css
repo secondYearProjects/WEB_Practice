@@ -106,8 +106,25 @@ header.content {
     display: block;
     border-radius: 10px;
     margin: 0 auto;
-    display: none;
+    /* display: none; */
     border-radius: 0;
+    transition: 1s;
+    /*Скорость перехода состояния элемента*/
+    animation: show 3s 1;
+    /* Указываем название анимации, её время и количество повторов*/
+    animation-fill-mode: forwards;
+    /* Чтобы элемент оставался в конечном состоянии анимации */
+    animation-delay: 1s;
+    /* Задержка перед началом */
+}
+
+@keyframes show {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 input[type="button"] {
