@@ -36,14 +36,10 @@
         </div>
     </header>
     <div class="main-menu">
-
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html">Catalog</a></li>
-            <li><a href="index.html">Delivery</a></li>
-            <li><a href="index.html">Price list</a></li>
-            <li><a href="index.html">Contacts</a></li>
-        </ul>
+        <div class="limiter">
+            <ul id="main-menu">
+            </ul>
+        </div>
     </div>
     <div class="slider">slider</div>
 
@@ -52,5 +48,37 @@
 
 
 </body>
+
+<script>
+    let menuItems = [
+        { title: "Home", link: "index.html" },
+        { title: "Catalog", link: "index.html" },
+        { title: "Delivery", link: "index.html" },
+        { title: "Price list", link: "index.html" },
+        { title: "Contacts", link: "index.html" }
+    ];
+
+    let mainMenu = document.getElementById("main-menu");
+
+    function addMenuItem(title, link) {
+        if (mainMenu.innerHTML != "") {
+            let newDelimeter = document.createElement("li");
+            newDelimeter.innerHTML = "|";
+            mainMenu.appendChild(newDelimeter);
+        }
+        let newMenuItem = document.createElement("li");
+        let newLink = document.createElement("a");
+        newLink.innerHTML = title;
+        newLink.href = link;
+        newMenuItem.appendChild(newLink);
+        mainMenu.appendChild(newMenuItem);
+    }
+
+    mainMenu.innerHTML = "";
+    menuItems.forEach(function (item) {
+        addMenuItem(item.title, item.link);
+    })
+
+</script>
 
 </html>
