@@ -17,6 +17,10 @@ body {
     height: 100%;
 }
 
+a {
+    transition: all 0.5s ease;
+}
+
 a:link {
     color: rgb(255, 255, 255);
     text-decoration: none;
@@ -72,9 +76,20 @@ header {
     flex-wrap: nowrap;
 }
 
-.slider {
+#slider {
     flex: 0 0 400px;
+    max-height: 400px;
     background-color: #f9f9f9;
+    overflow: hidden;
+}
+
+#slider img {
+    height: 100%;
+    max-width: none;
+    display: block;
+    border-radius: 10px;
+    margin: 0 auto;
+    display: none;
 }
 
 .main-content {
@@ -82,6 +97,32 @@ header {
     background-color: red;
     display: flex;
     flex-direction: row;
+}
+
+.main-limiter {
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    margin-top: 0;
+    flex: 0 0 auto;
+}
+
+.content-column {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.sidebar {
+    margin-left: auto;
+    width: 200px;
+    background-color: aqua;
+}
+
+.content {
+    width: 100%;
 }
 
 footer {
@@ -93,7 +134,7 @@ footer {
 
 .company-contacts, .company-name {
     max-width: 300px;
-    min-width: 300px;
+    min-width: fit-content;
 }
 
 .company-name {
@@ -137,7 +178,7 @@ footer {
 
 .main-menu .limiter ul {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     flex-direction: row;
     padding-left: 0;
     margin: auto;
@@ -147,5 +188,7 @@ footer {
 }
 
 .main-menu .limiter ul li {
+    padding-top: 10px;
     margin: auto;
+    min-width: fit-content;
 }

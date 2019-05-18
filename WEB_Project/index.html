@@ -9,6 +9,8 @@
     <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300&display=swap" rel="stylesheet">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
     <link rel="stylesheet" href="style.css" type="text/css">
 
     <title>U-record</title>
@@ -41,9 +43,21 @@
             </ul>
         </div>
     </div>
-    <div class="slider">slider</div>
+    <div class="slider" id="slider">
+        <img id="img1" src="images/cover1.jpg" border="0">
+        <img id="img2" src="images/cover2.jpg" border="0">
 
-    <section class="main-content">...</section>
+    </div>
+
+    <section class="main-content">
+        <div class="main-limiter">
+            <div class="sidebar">dwqdw</div>
+            <div class="content-column">
+                <div class="content">fewfew</div>
+                <header>dwqj ioqwiod qw</header>
+            </div>
+        </div>
+    </section>
     <footer>...</footer>
 
 
@@ -78,7 +92,18 @@
     menuItems.forEach(function (item) {
         addMenuItem(item.title, item.link);
     })
+</script>
 
+<script>
+    let sc = $("#slider img").length;
+    let count = 0;
+    nextSlide();
+
+    function nextSlide() {
+        count = count == sc ? 1 : ++count;
+        $("#slider #img" + count).fadeIn(500).delay(1500).fadeOut(500);
+        setTimeout(nextSlide, 2500);
+    }
 </script>
 
 </html>
