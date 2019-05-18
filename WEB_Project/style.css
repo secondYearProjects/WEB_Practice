@@ -1,29 +1,66 @@
-body {
+* {
     margin: 0;
     padding: 0;
+}
+
+html {
+    height: 100%;
+}
+
+body {
     color: #767676;
     font-size: 14px;
     font-family: 'PT Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    align-items: stretch;
-    align-content: stretch;
+    height: 100%;
 }
 
 .limiter {
     max-width: 980px;
+    width: 100%;
     margin: auto auto;
     padding-left: 10px;
     padding-right: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
 }
 
-.header {
-    background-color: aqua;
-    width: 100%;
-    height: 230px;
+header {
+    flex: 0 0 230px;
+    background-color: yellow;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    align-content: stretch;
+}
+
+.main-content {
+    flex: 1 0 auto;
+    background-color: red;
+    display: flex;
+    flex-direction: row;
+}
+
+footer {
+    background-color: blue;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.company-name, .company-contacts {
+    flex: 1 0 30%;
+    max-width: 300px;
+}
+
+.company-name {
+    font-size: 26px;
 }
