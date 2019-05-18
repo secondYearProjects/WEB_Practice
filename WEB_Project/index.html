@@ -44,10 +44,10 @@
         </div>
     </div>
     <div class="slider" id="slider">
-        <img id="img1" src="images/cover1.jpg" border="0">
-        <img id="img2" src="images/cover2.jpg" border="0">
-
+        <input type="button" class="left" onclick="nextSlide()" value="<">
+        <input type="button" class="right" onclick="previousSlide()" value=">">
     </div>
+
 
     <section class="main-content">
         <div class="main-limiter">
@@ -92,17 +92,55 @@
     menuItems.forEach(function (item) {
         addMenuItem(item.title, item.link);
     })
-</script>
 
-<script>
+    let sliderImages = [
+        "images/cover1.jpg",
+        "images/cover2.jpg",
+        "images/cover3.jpg",
+        "images/cover4.jpg",
+        "images/cover5.jpg",
+        "images/cover6.jpg",
+    ]
+    let slider = document.getElementById("slider");
+    sliderImages.forEach(function (item, i) {
+        let newImg = document.createElement("img");
+        newImg.src = item;
+        newImg.id = "img" + String(i + 1);
+        slider.appendChild(newImg);
+    });
+
+
+    //let sc = sliderImages.length;
+    let current = 0;
+
+    function showNext() {
+
+    }
     let sc = $("#slider img").length;
     let count = 0;
+    let processing = false;
     nextSlide();
 
+
+
     function nextSlide() {
-        count = count == sc ? 1 : ++count;
-        $("#slider #img" + count).fadeIn(500).delay(1500).fadeOut(500);
-        setTimeout(nextSlide, 2500);
+        if (processing === false) {
+            count = (count == sc) ? 1 : ++count;
+            let time = 4000;
+            let fade = 800;
+            $("#slider #img" + count).fadeIn(fade).delay(time - 2 * fade).fadeOut(fade);
+            processing = true;
+            setTimeout(nextSlide, time);
+            processing = false;
+        }
+    }
+
+    function previousSlide() {
+        count = (count == 1) ? sc : --count;
+        let time = 4000;
+        let fade = 800;
+        $("#slider #img" + count).fadeIn(fade).delay(time - 2 * fade).fadeOut(fade);
+        setTimeout(nextSlide, time);
     }
 </script>
 

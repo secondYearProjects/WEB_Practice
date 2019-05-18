@@ -18,7 +18,15 @@ body {
 }
 
 a {
-    transition: all 0.5s ease;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size .3s;
+}
+
+a:hover, a:focus {
+    background-size: 100% 2px;
 }
 
 a:link {
@@ -85,16 +93,43 @@ header.content {
     max-height: 400px;
     background-color: #fdfdfd;
     overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    position: relative;
 }
 
 #slider img {
     object-fit: cover;
-   
+    height: 400px;
+    width: auto;
     max-width: none;
     display: block;
     border-radius: 10px;
     margin: 0 auto;
     display: none;
+    border-radius: 0;
+}
+
+input[type="button"] {
+    width: 35px;
+    height: 60px;
+    background-color: rgba(209, 209, 209, 0.6);
+    border: 0;
+    color: black;
+    font-weight: bold;
+    font-size: 40px;
+    transform: scaleY(2);
+    position: absolute;
+    z-index: 100;
+    top: 40%;
+}
+
+input[type="button"].left {
+    left: 10%;
+}
+
+input[type="button"].right {
+    right: 10%;
 }
 
 .main-content {
