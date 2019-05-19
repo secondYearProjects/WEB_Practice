@@ -19,7 +19,29 @@
     <title>U-record</title>
 </head>
 
+
+
+
 <body>
+    <form id="feedbackWrapper" class="feedbackWrapper">
+        <div class="feedbackDarkner"></div>
+        <div class="feedback">
+            <p class="title">Feedback</p>
+            <div class="inputGroup">
+                <p class="subtitle">Your name</p>
+                <input type="text">
+            </div>
+            <div class="inputGroup">
+                <p class="subtitle">Phone</p>
+                <input type="text">
+            </div>
+            <div class="inputGroup">
+                <p class="subtitle">Message</p>
+                <input type="text" size="large">
+            </div>
+        </div>
+        <div class="close" onclick="hideFeedback();"></div>
+    </form>
 
     <header>
         <div class="limiter">
@@ -177,6 +199,9 @@
     addCategoryItems(shopCategories, categories);
 
     slideShow();
+
+    
+
 </script>
 
 

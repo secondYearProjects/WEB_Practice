@@ -114,6 +114,7 @@ function addMenuItem(title, link, menu, addDelim = false) {
     newLink.href = link;
     newMenuItem.appendChild(newLink);
     menu.appendChild(newMenuItem);
+    return newMenuItem;
 }
 
 function showPath(pathList) {
@@ -160,3 +161,15 @@ function slideShow() {
     }
 }
 
+
+function hideFeedback() {
+    $("#feedbackWrapper").fadeOut("slow", function () {
+        $("#feedbackWrapper").hide();
+    });
+}
+
+function showFeedback() {
+    $("#feedbackWrapper").show();
+    $("#feedbackWrapper").fadeIn("slow", function () {
+    });
+}
