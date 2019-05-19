@@ -60,7 +60,10 @@
 
     <section class="main-content">
         <div class="main-limiter">
-            <div class="sidebar">dwqdw</div>
+            <div class="sidebar">
+                <ul class="vertical" id="categories">
+                </ul>
+            </div>
             <div class="content-column">
 
                 <div class="content" id="shopItems">
@@ -138,7 +141,7 @@
         "images/cover5.jpg",
         "images/cover6.jpg",
     ];
-    
+
     let records = [
         { title: "Queen - Bohemian Rhapsody", price: "60", label: "images/bohemian.jpg", link: "index.html" },
         { title: "KOMISSIYA - СЮДА", price: "30", label: "images/komissiya.jpg", link: "index.html" },
@@ -148,13 +151,18 @@
 
     ];
 
-    let shopCategories = [];
+    let shopCategories = [
+        { title: "Records", link: "index.html", subcat: [{ title: "In stock", link: "index.html" }, { title: "Custom", link: "index.html" }] },
+        { title: "Souvenirs", link: "index.html" },
+        { title: "Tapes", link: "index.html" },
+    ];
 
     let pageNumber = 7;
     let currentPage = 3;
 
     let mainMenu = document.getElementById("main-menu");
     let footerMenu = document.getElementById("footerMenu");
+    let categories = document.getElementById("categories");
 
     addPageNumbers(7, 3);
     addShopItems(records);
@@ -162,6 +170,33 @@
 
     addMenuitems(menuItems, mainMenu, true);
     addMenuitems(menuItems, footerMenu);
+
+    addCategoryItems(shopCategories, categories);
+
+    function addCategoryItem(item, menu) {
+        let newMenuItem = document.createElement("li");
+        let newLink = document.createElement("a");
+        newLink.innerHTML = item.title;
+        newLink.href = item.link;
+        newMenuItem.appendChild(newLink);
+        menu.appendChild(newMenuItem);
+
+        if (item.subcat) {
+            if (item.subcat.length > 0) {
+                let newSub = document.createElement("ul");
+                newSub.classList.add("doted");
+                newMenuItem.appendChild(newSub);
+                addCategoryItems(item.subcat, newSub);
+            }
+        }
+    }
+
+    function addCategoryItems(items, menu) {
+        items.forEach(function (item) {
+
+            addCategoryItem(item, menu);
+        });
+    }
 
     function createShopItem(record) {
         let item = document.createElement("div");

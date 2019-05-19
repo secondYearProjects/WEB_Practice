@@ -457,6 +457,7 @@ ul.vertical {
     list-style: none;
     width: 100%;
     margin-top: 0;
+    color: #767676;
 }
 
 ul.vertical li {
@@ -478,4 +479,14 @@ img.authorLogo {
 
 .row * {
     margin: 10px;
+}
+
+.sidebar a {
+    color: #777777 !important;
+}
+
+ul.doted * {
+    font-size: 12px;
+    margin-left: 10px;
+    list-style-type: disc;
 }
