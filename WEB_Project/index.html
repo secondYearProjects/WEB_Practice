@@ -14,6 +14,8 @@
 
     <link rel="stylesheet" href="style.css" type="text/css">
 
+    <script type="text/javascript" src="script.js"></script>
+
     <title>U-record</title>
 </head>
 
@@ -22,7 +24,8 @@
     <header>
         <div class="limiter">
             <div class="company-name">
-                <img src="icons/company.jpg">
+                <img src="icons/company.jpg"
+                    alt="This is artisticly styled record logo. Very sad that you can't see it now">
                 <div class="text-group">
                     <p class="title">U-record</p>
                     <p class="slogan">Your grandpa would be surprised</p>
@@ -116,11 +119,7 @@
             </div>
         </div>
     </footer>
-
-
 </body>
-
-<script type="text/javascript" src="script.js"></script>
 
 <script>
     let menuItems = [
@@ -148,7 +147,6 @@
         { title: "JESUS CHRIST GOLF CLUB - surf", price: "28", label: "images/surf.jpg", link: "index.html" },
         { title: "David Bowie - Aladdin Sane", price: "45", label: "images/bowie.jpg", link: "index.html" },
         { title: "Kendrick Lamar - DAMN", price: "38", label: "images/lamar.jpg", link: "index.html" }
-
     ];
 
     let shopCategories = [
@@ -163,6 +161,11 @@
     let mainMenu = document.getElementById("main-menu");
     let footerMenu = document.getElementById("footerMenu");
     let categories = document.getElementById("categories");
+    let slider = document.getElementById("slider");
+
+    let totalImages = sliderImages.length;
+    let current = 0;
+    let slideTimer = null;
 
     addPageNumbers(7, 3);
     addShopItems(records);
@@ -173,173 +176,8 @@
 
     addCategoryItems(shopCategories, categories);
 
-    function addCategoryItem(item, menu) {
-        let newMenuItem = document.createElement("li");
-        let newLink = document.createElement("a");
-        newLink.innerHTML = item.title;
-        newLink.href = item.link;
-        newMenuItem.appendChild(newLink);
-        menu.appendChild(newMenuItem);
-
-        if (item.subcat) {
-            if (item.subcat.length > 0) {
-                let newSub = document.createElement("ul");
-                newSub.classList.add("doted");
-                newMenuItem.appendChild(newSub);
-                addCategoryItems(item.subcat, newSub);
-            }
-        }
-    }
-
-    function addCategoryItems(items, menu) {
-        items.forEach(function (item) {
-
-            addCategoryItem(item, menu);
-        });
-    }
-
-    function createShopItem(record) {
-        let item = document.createElement("div");
-        item.classList.add('shopItem');
-        let imageBlock = document.createElement("div");
-        imageBlock.classList.add('record');
-
-        let labelImage = document.createElement("img");
-        labelImage.classList.add('label');
-        labelImage.src = record.label;
-
-        let recordImage = document.createElement("img");
-        recordImage.classList.add('recordImage');
-        recordImage.src = "icons/record.png";
-
-        imageBlock.appendChild(labelImage);
-        imageBlock.appendChild(recordImage);
-
-
-        let titleBlock = document.createElement("div");
-        titleBlock.classList.add('title');
-        titleBlock.innerHTML = record.title;
-
-        let linkBuy = document.createElement("a");
-        linkBuy.href = record.link;
-
-        let priceBlock = document.createElement("div");
-        priceBlock.classList.add('priceBlock');
-
-        let price = document.createElement("p");
-        price.classList.add('price');
-        price.innerHTML = record.price;
-
-        let cartImage = document.createElement("img");
-        cartImage.classList.add('shopCart');
-        cartImage.src = "icons/shopping-cart.png";
-
-        priceBlock.appendChild(price);
-        priceBlock.appendChild(cartImage);
-
-        linkBuy.appendChild(priceBlock);
-
-        item.appendChild(imageBlock);
-        item.appendChild(titleBlock);
-        item.appendChild(linkBuy);
-        return item;
-    }
-
-    function addShopItems(records) {
-        let shopItems = document.getElementById("shopItems");
-        records.forEach(function (item) {
-            shopItems.appendChild(createShopItem(item));
-        });
-    }
-
-    function addPageNumbers(pageNumber, currentPage) {
-        let pageNumbers = document.getElementById("pageNumbers");
-        pageNumbers.innerHTML = "";
-        for (let i = 1; i <= 7; i++) {
-            let newPageIndex = document.createElement("li");
-            let newLink = document.createElement("a");
-            newLink.href = "index.html";
-            newLink.innerHTML = String(i);
-            newPageIndex.appendChild(newLink);
-            if (i == currentPage) {
-                newPageIndex.setAttribute("current", "true");
-            }
-            pageNumbers.appendChild(newPageIndex);
-        }
-    }
-
-    function addMenuitems(menuItems, menu, addDelim = false) {
-        menu.innerHTML = "";
-        menuItems.forEach(function (item) {
-            addMenuItem(item.title, item.link, menu, addDelim);
-        })
-    }
-
-    function addMenuItem(title, link, menu, addDelim = false) {
-        if (addDelim) {
-            if (menu.innerHTML != "") {
-                let newDelimeter = document.createElement("li");
-                newDelimeter.innerHTML = "|";
-                menu.appendChild(newDelimeter);
-            }
-        }
-        let newMenuItem = document.createElement("li");
-        let newLink = document.createElement("a");
-        newLink.innerHTML = title;
-        newLink.href = link;
-        newMenuItem.appendChild(newLink);
-        menu.appendChild(newMenuItem);
-    }
-
-    function showPath(pathList) {
-        let path = document.getElementById("path");
-        pathList.forEach(function (item) {
-            let newPathItem = document.createElement("li");
-            newPathItem.innerHTML = item;
-            path.appendChild(newPathItem);
-        });
-    }
-
-
-    let slider = document.getElementById("slider");
-
-    let totalImages = sliderImages.length;
-    let current = 0;
-    let slideTimer = null;
-    function showNext() {
-        if (current == totalImages) {
-            show(1);
-        }
-        else show(current + 1);
-    }
-
-    function showPrevious() {
-        if (current == 1) {
-            show(totalImages);
-        }
-        else show(current - 1);
-    }
-
-    function show(slideNumber) {
-        clearTimeout(slideTimer);
-        slideTimer = null;
-        let oldImage = document.getElementById("sliderImage");
-        oldImage.parentNode.removeChild(oldImage);
-        newImage = document.createElement("img");
-        newImage.id = "sliderImage";
-        current = slideNumber;
-        newImage.src = "images/cover" + current + ".jpg";
-
-        slider.appendChild(newImage);
-    }
-
-    function slideShow() {
-        if (slideTimer == null) {
-            slideTimer = setTimeout(function () { slideTimer = null; showNext(); slideShow(); }, 4000);
-        }
-    }
-
     slideShow();
 </script>
+
 
 </html>
