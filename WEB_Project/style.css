@@ -330,5 +330,86 @@ footer {
     width: 50%;
 }
 
+.shopItem {
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 380px;
+    max-height: 380px;
+    background-color: #333333;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+}
 
+.shopItem:hover {
+    animation-name: shadowPulse;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
 
+@keyframes shadowPulse {
+    0% {
+        box-shadow: 0px 0px 0px 0px hsla(0, 0%, 0%, 1);
+    }
+    100% {
+        box-shadow: 5px 5px 5px 0px hsla(0, 0%, 0%, 0);
+    }
+}
+
+.shopItem .record {
+    min-width: 210px;
+    max-width: 210px;
+    min-height: 210px;
+    max-height: 210px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+
+.shopItem .record img.label {
+    width: 70px;
+    height: 70px;
+    z-index: 0;
+    position: absolute;
+    top: 70px;
+    left: 70px;
+}
+
+.shopItem .record img.recordImage {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.shopItem .title {
+    width: 100%;
+    color: whitesmoke;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.shopItem .priceBlock {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-top: auto;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.shopItem .priceBlock p.price {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.shopItem .priceBlock p.price::after {
+    content: '$';
+}
