@@ -128,7 +128,6 @@ input[type="button"] {
     background-color: rgba(209, 209, 209, 0.6);
     border: 0;
     color: black;
-    font-weight: bold;
     font-size: 40px;
     transform: scaleY(1.5);
     position: absolute;
@@ -260,7 +259,6 @@ footer {
     flex-direction: row;
     padding-left: 10px;
     margin-left: 0;
-    
     list-style: none;
 }
 
@@ -273,3 +271,64 @@ footer {
 .store-path .limiter ul li+li:before {
     content: "/"
 }
+
+.toplined {
+    margin-top: 60px;
+    padding-top: 10px;
+    border-top: 1px solid #777777;
+    display: flex;
+    justify-items: auto;
+}
+
+.page-numbers {
+    flex: 0 0 40px;
+    background-color: #fdfdfd;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    align-content: stretch;
+}
+
+.page-numbers .limiter ul {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding-left: 10px;
+    justify-content: space-evenly;
+    margin: auto;
+    list-style: none;
+    align-items: flex-end;
+    align-content: flex-end;
+}
+
+.page-numbers .limiter ul li {
+    padding-top: 10px;
+    margin-right: 0;
+    padding-right: 20px;
+    min-width: fit-content;
+    margin-bottom: auto;
+}
+
+.page-numbers .limiter ul li[current="true"] {
+    font-weight: bolder;
+    font-size: 16px;
+    color: #444444;
+    font-family: 'PT Sans', sans-serif;
+}
+
+.page-numbers .limiter ul li a {
+    color: #767676;
+}
+
+.text-group.normalized {
+    margin: auto;
+    margin-top: 0;
+    display: flex;
+    align-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    width: 50%;
+}
+
+
+

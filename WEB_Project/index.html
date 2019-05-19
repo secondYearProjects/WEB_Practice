@@ -8,6 +8,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
@@ -62,7 +63,30 @@
             <div class="sidebar">dwqdw</div>
             <div class="content-column">
                 <div class="content">fewfew</div>
-                <header>dwqj ioqwiod qw</header>
+                <div class="page-numbers">
+                    <div class="limiter">
+                        <ul id="pageNumbers">
+                        </ul>
+                    </div>
+                </div>
+                <header class="toplined">
+
+                    <div class="text-group normalized">
+                        <p> Our project We've spent many time on is a record company. Me and my friends want to bring up
+                            some old school style back into the way we listen music. With our help you can get a record
+                            of your favourite songs or make a great present. We use only legal music sources and make
+                            deals for every record we produce. So by buying a record you also sponsor your artist.
+                        </p>
+                    </div>
+                    <div class="text-group normalized">
+                        <p> People connect better with stories than they do with a list of facts. If you want people to
+                            actually remember the song, take the U-record approach and tell a story about your band.
+
+                            Quite frankly, not all bands have the most amazing story to tell -- and that's okay. The
+                            content of the story is less important than the fact that you are presenting information in
+                            the form of a story to begin with a great record.</p>
+                    </div>
+                </header>
             </div>
         </div>
     </section>
@@ -81,6 +105,27 @@
     ];
 
     let mainMenu = document.getElementById("main-menu");
+
+    let pageNumber = 7;
+    let currentPage = 3;
+
+    function addPageNumbers(pageNumber, currentPage) {
+        let pageNumbers = document.getElementById("pageNumbers");
+        pageNumbers.innerHTML = "";
+        for (let i = 1; i <= 7; i++) {
+            let newPageIndex = document.createElement("li");
+            let newLink = document.createElement("a");
+            newLink.href = "index.html";
+            newLink.innerHTML = String(i);
+            newPageIndex.appendChild(newLink);
+            if (i == currentPage) {
+                newPageIndex.setAttribute("current", "true");
+            }
+            pageNumbers.appendChild(newPageIndex);
+        }
+    }
+
+    addPageNumbers(7, 3);
 
     function addMenuItem(title, link) {
         if (mainMenu.innerHTML != "") {
