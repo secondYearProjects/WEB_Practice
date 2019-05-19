@@ -62,34 +62,26 @@
         <div class="main-limiter">
             <div class="sidebar">dwqdw</div>
             <div class="content-column">
-                <div class="content">
-                    <div class="shopItem">
-                        <div class="record">
-                            <img src="images/bohemian.jpg" class="label">
-                            <img src="icons/record.png" class="recordImage">
-                        </div>
-                        <div class="title">Bohemian Rhapsody</div>
-                        <div class="priceBlock">
-                            <p class="price">1900</p>
-                        </div>
-                    </div>
+
+                <div class="content" id="shopItems">
                 </div>
+
                 <div class="page-numbers">
                     <div class="limiter">
                         <ul id="pageNumbers">
                         </ul>
                     </div>
                 </div>
-                <header class="toplined">
+                <header class="toplined evenly">
 
-                    <div class="text-group normalized">
+                    <div class="text-group">
                         <p> Our project We've spent many time on is a record company. Me and my friends want to bring up
                             some old school style back into the way we listen music. With our help you can get a record
                             of your favourite songs or make a great present. We use only legal music sources and make
                             deals for every record we produce. So by buying a record you also sponsor your artist.
                         </p>
                     </div>
-                    <div class="text-group normalized">
+                    <div class="text-group">
                         <p> People connect better with stories than they do with a list of facts. If you want people to
                             actually remember the song, take the U-record approach and tell a story about your band.
 
@@ -101,10 +93,31 @@
             </div>
         </div>
     </section>
-    <footer>...</footer>
+    <footer>
+        <div class="limit evenly">
+            <div class="text-group pressedTop">
+                © 2017-2019 U-record<br>
+                info@Urecord.com
+            </div>
+
+            <div class="text-group pressedTop">
+                <ul class="vertical" id="footerMenu">
+                </ul>
+            </div>
+
+            <div class="text-group pressedTop">
+                <div class="row">
+                    <img class="authorLogo" src="icons/SJ.jpg">
+                    <p>Created by Sergei Yarema K-28 2019</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 
 </body>
+
+<script type="text/javascript" src="script.js"></script>
 
 <script>
     let menuItems = [
@@ -115,10 +128,94 @@
         { title: "Contacts", link: "index.html" }
     ];
 
-    let mainMenu = document.getElementById("main-menu");
+    let pathList = ["Home", "Catalog", "Records", "In stock"];
+
+    let sliderImages = [
+        "images/cover1.jpg",
+        "images/cover2.jpg",
+        "images/cover3.jpg",
+        "images/cover4.jpg",
+        "images/cover5.jpg",
+        "images/cover6.jpg",
+    ];
+    
+    let records = [
+        { title: "Queen - Bohemian Rhapsody", price: "60", label: "images/bohemian.jpg", link: "index.html" },
+        { title: "KOMISSIYA - СЮДА", price: "30", label: "images/komissiya.jpg", link: "index.html" },
+        { title: "JESUS CHRIST GOLF CLUB - surf", price: "28", label: "images/surf.jpg", link: "index.html" },
+        { title: "David Bowie - Aladdin Sane", price: "45", label: "images/bowie.jpg", link: "index.html" },
+        { title: "Kendrick Lamar - DAMN", price: "38", label: "images/lamar.jpg", link: "index.html" }
+
+    ];
+
+    let shopCategories = [];
 
     let pageNumber = 7;
     let currentPage = 3;
+
+    let mainMenu = document.getElementById("main-menu");
+    let footerMenu = document.getElementById("footerMenu");
+
+    addPageNumbers(7, 3);
+    addShopItems(records);
+    showPath(pathList);
+
+    addMenuitems(menuItems, mainMenu, true);
+    addMenuitems(menuItems, footerMenu);
+
+    function createShopItem(record) {
+        let item = document.createElement("div");
+        item.classList.add('shopItem');
+        let imageBlock = document.createElement("div");
+        imageBlock.classList.add('record');
+
+        let labelImage = document.createElement("img");
+        labelImage.classList.add('label');
+        labelImage.src = record.label;
+
+        let recordImage = document.createElement("img");
+        recordImage.classList.add('recordImage');
+        recordImage.src = "icons/record.png";
+
+        imageBlock.appendChild(labelImage);
+        imageBlock.appendChild(recordImage);
+
+
+        let titleBlock = document.createElement("div");
+        titleBlock.classList.add('title');
+        titleBlock.innerHTML = record.title;
+
+        let linkBuy = document.createElement("a");
+        linkBuy.href = record.link;
+
+        let priceBlock = document.createElement("div");
+        priceBlock.classList.add('priceBlock');
+
+        let price = document.createElement("p");
+        price.classList.add('price');
+        price.innerHTML = record.price;
+
+        let cartImage = document.createElement("img");
+        cartImage.classList.add('shopCart');
+        cartImage.src = "icons/shopping-cart.png";
+
+        priceBlock.appendChild(price);
+        priceBlock.appendChild(cartImage);
+
+        linkBuy.appendChild(priceBlock);
+
+        item.appendChild(imageBlock);
+        item.appendChild(titleBlock);
+        item.appendChild(linkBuy);
+        return item;
+    }
+
+    function addShopItems(records) {
+        let shopItems = document.getElementById("shopItems");
+        records.forEach(function (item) {
+            shopItems.appendChild(createShopItem(item));
+        });
+    }
 
     function addPageNumbers(pageNumber, currentPage) {
         let pageNumbers = document.getElementById("pageNumbers");
@@ -136,28 +233,28 @@
         }
     }
 
-    addPageNumbers(7, 3);
+    function addMenuitems(menuItems, menu, addDelim = false) {
+        menu.innerHTML = "";
+        menuItems.forEach(function (item) {
+            addMenuItem(item.title, item.link, menu, addDelim);
+        })
+    }
 
-    function addMenuItem(title, link) {
-        if (mainMenu.innerHTML != "") {
-            let newDelimeter = document.createElement("li");
-            newDelimeter.innerHTML = "|";
-            mainMenu.appendChild(newDelimeter);
+    function addMenuItem(title, link, menu, addDelim = false) {
+        if (addDelim) {
+            if (menu.innerHTML != "") {
+                let newDelimeter = document.createElement("li");
+                newDelimeter.innerHTML = "|";
+                menu.appendChild(newDelimeter);
+            }
         }
         let newMenuItem = document.createElement("li");
         let newLink = document.createElement("a");
         newLink.innerHTML = title;
         newLink.href = link;
         newMenuItem.appendChild(newLink);
-        mainMenu.appendChild(newMenuItem);
+        menu.appendChild(newMenuItem);
     }
-
-    mainMenu.innerHTML = "";
-    menuItems.forEach(function (item) {
-        addMenuItem(item.title, item.link);
-    })
-
-    let pathList = ["Home", "Catalog"];
 
     function showPath(pathList) {
         let path = document.getElementById("path");
@@ -168,26 +265,8 @@
         });
     }
 
-    showPath(pathList);
 
-    let sliderImages = [
-        "images/cover1.jpg",
-        "images/cover2.jpg",
-        "images/cover3.jpg",
-        "images/cover4.jpg",
-        "images/cover5.jpg",
-        "images/cover6.jpg",
-    ]
     let slider = document.getElementById("slider");
-
-    function addImages() {
-        sliderImages.forEach(function (item, i) {
-            let newImg = document.createElement("img");
-            newImg.src = item;
-            newImg.id = "img" + String(i + 1);
-            slider.appendChild(newImg);
-        });
-    }
 
     let totalImages = sliderImages.length;
     let current = 0;
