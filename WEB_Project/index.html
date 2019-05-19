@@ -43,12 +43,19 @@
             </ul>
         </div>
     </div>
+
     <div class="slider" id="slider">
         <img id="sliderImage" src="images/cover6.jpg">
         <input type="button" class="left" onclick="showPrevious();slideShow();" value="<">
         <input type="button" class="right" onclick="showNext();slideShow();" value=">">
     </div>
 
+    <div class="store-path">
+        <div class="limiter">
+            <ul id="path">
+            </ul>
+        </div>
+    </div>
 
     <section class="main-content">
         <div class="main-limiter">
@@ -93,6 +100,19 @@
     menuItems.forEach(function (item) {
         addMenuItem(item.title, item.link);
     })
+
+    let pathList = ["Home", "Catalog"];
+
+    function showPath(pathList) {
+        let path = document.getElementById("path");
+        pathList.forEach(function (item) {
+            let newPathItem = document.createElement("li");
+            newPathItem.innerHTML = item;
+            path.appendChild(newPathItem);
+        });
+    }
+
+    showPath(pathList);
 
     let sliderImages = [
         "images/cover1.jpg",

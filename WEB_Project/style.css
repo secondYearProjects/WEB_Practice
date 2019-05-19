@@ -145,6 +145,14 @@ input[type="button"].right {
     right: 10%;
 }
 
+.store-path {
+    flex: 0 0 60px;
+    background-color: #fdfdfd;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
 .main-content {
     flex: 1 0 auto;
     background-color: #fdfdfd;
@@ -244,4 +252,24 @@ footer {
     padding-top: 10px;
     margin: auto;
     min-width: fit-content;
+}
+
+.store-path .limiter ul {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding-left: 10px;
+    margin-left: 0;
+    
+    list-style: none;
+}
+
+.store-path .limiter ul li {
+    padding-top: 10px;
+    margin-right: 0;
+    min-width: fit-content;
+}
+
+.store-path .limiter ul li+li:before {
+    content: "/"
 }
