@@ -44,8 +44,9 @@
         </div>
     </div>
     <div class="slider" id="slider">
-        <input type="button" class="left" onclick="nextSlide()" value="<">
-        <input type="button" class="right" onclick="previousSlide()" value=">">
+        <img id="sliderImage" src="images/cover6.jpg">
+        <input type="button" class="left" onclick="showPrevious();slideShow();" value="<">
+        <input type="button" class="right" onclick="showNext();slideShow();" value=">">
     </div>
 
 
@@ -112,47 +113,43 @@
         });
     }
 
-    //addImages();
-
-    //let sc = sliderImages.length;
     let totalImages = sliderImages.length;
     let current = 0;
-
+    let slideTimer = null;
     function showNext() {
-        slider.innerHTML = "";
+        if (current == totalImages) {
+            show(1);
+        }
+        else show(current + 1);
+    }
+
+    function showPrevious() {
+        if (current == 1) {
+            show(totalImages);
+        }
+        else show(current - 1);
+    }
+
+    function show(slideNumber) {
+        clearTimeout(slideTimer);
+        slideTimer = null;
+        let oldImage = document.getElementById("sliderImage");
+        oldImage.parentNode.removeChild(oldImage);
         newImage = document.createElement("img");
-        current = (current == totalImages) ? 1 : ++current;
+        newImage.id = "sliderImage";
+        current = slideNumber;
         newImage.src = "images/cover" + current + ".jpg";
 
         slider.appendChild(newImage);
     }
-    showNext();
-    let sc = $("#slider img").length;
-    let count = 0;
-    let processing = false;
-    //nextSlide();
 
-
-
-    function nextSlide() {
-        if (processing === false) {
-            count = (count == sc) ? 1 : ++count;
-            let time = 4000;
-            let fade = 800;
-            //$("#slider #img" + count).fadeIn(fade).delay(time - 2 * fade).fadeOut(fade);
-            processing = true;
-            setTimeout(nextSlide, time);
-            processing = false;
+    function slideShow() {
+        if (slideTimer == null) {
+            slideTimer = setTimeout(function () { slideTimer = null; showNext(); slideShow(); }, 4000);
         }
     }
 
-    function previousSlide() {
-        count = (count == 1) ? sc : --count;
-        let time = 4000;
-        let fade = 800;
-        //$("#slider #img" + count).fadeIn(fade).delay(time - 2 * fade).fadeOut(fade);
-        setTimeout(nextSlide, time);
-    }
+    slideShow();
 </script>
 
 </html>

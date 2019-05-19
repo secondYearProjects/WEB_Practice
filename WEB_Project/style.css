@@ -106,16 +106,11 @@ header.content {
     display: block;
     border-radius: 10px;
     margin: 0 auto;
-    /* display: none; */
     border-radius: 0;
     transition: 1s;
-    /*Скорость перехода состояния элемента*/
     animation: show 3s 1;
-    /* Указываем название анимации, её время и количество повторов*/
     animation-fill-mode: forwards;
-    /* Чтобы элемент оставался в конечном состоянии анимации */
-    animation-delay: 1s;
-    /* Задержка перед началом */
+    animation-delay: 0s;
 }
 
 @keyframes show {
@@ -135,10 +130,11 @@ input[type="button"] {
     color: black;
     font-weight: bold;
     font-size: 40px;
-    transform: scaleY(2);
+    transform: scaleY(1.5);
     position: absolute;
     z-index: 100;
     top: 40%;
+    outline: none;
 }
 
 input[type="button"].left {
