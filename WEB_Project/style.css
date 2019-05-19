@@ -495,8 +495,9 @@ ul.doted * {
     width: 100%;
     min-height: 100%;
     position: absolute;
-    opacity: 0;
+    /* opacity: 1; */
     display: none;
+    z-index: 9;
 }
 
 .feedback {
@@ -527,7 +528,6 @@ ul.doted * {
 
 .feedback .inputGroup {
     width: 340px;
-    height: 70px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -546,6 +546,23 @@ ul.doted * {
     max-width: 340px;
     min-height: 45px;
     max-height: 45px;
+    font-size: 20px;
+}
+
+.inputGroup input[type="text"]>* {
+    margin-left: 10px;
+}
+
+.inputGroup input[type="submit"] {
+    min-width: 130px;
+    max-width: 130px;
+    min-height: 40px;
+    max-height: 40px;
+    color: whitesmoke;
+    border: 0;
+    font-size: 27px;
+    font-weight: bold;
+    background-color: #777777;
 }
 
 .inputGroup input[size="large"] {

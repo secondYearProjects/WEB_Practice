@@ -29,16 +29,20 @@
             <p class="title">Feedback</p>
             <div class="inputGroup">
                 <p class="subtitle">Your name</p>
-                <input type="text">
+                <input type="text" required>
             </div>
             <div class="inputGroup">
                 <p class="subtitle">Phone</p>
-                <input type="text">
+                <input type="text" required>
             </div>
             <div class="inputGroup">
                 <p class="subtitle">Message</p>
-                <input type="text" size="large">
+                <input type="text" size="large" required>
             </div>
+            <div class="inputGroup">
+                <input type="submit" value="Submit">
+            </div>
+
         </div>
         <div class="close" onclick="hideFeedback();"></div>
     </form>
@@ -148,8 +152,7 @@
         { title: "Home", link: "index.html" },
         { title: "Catalog", link: "index.html" },
         { title: "Delivery", link: "index.html" },
-        { title: "Price list", link: "index.html" },
-        { title: "Contacts", link: "index.html" }
+        { title: "Price list", link: "index.html" }
     ];
 
     let pathList = ["Home", "Catalog", "Records", "In stock"];
@@ -196,11 +199,19 @@
     addMenuitems(menuItems, mainMenu, true);
     addMenuitems(menuItems, footerMenu);
 
+    let topMenuFeedback = addMenuItem("Feedback", "index.html", mainMenu, true);
+    topMenuFeedback.onclick = function () { showFeedback(); };
+    topMenuFeedback.innerHTML = "Feedback";
+    let botMenuFeedback = addMenuItem("Feedback", "index.html", footerMenu);
+    botMenuFeedback.innerHTML = "Feedback";
+    botMenuFeedback.style.color = "white";
+    botMenuFeedback.onclick = function () { showFeedback(); window.scrollTo(0, 0); };
+
     addCategoryItems(shopCategories, categories);
 
     slideShow();
 
-    
+
 
 </script>
 

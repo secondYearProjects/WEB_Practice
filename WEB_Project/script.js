@@ -169,7 +169,6 @@ function hideFeedback() {
 }
 
 function showFeedback() {
-    $("#feedbackWrapper").show();
     $("#feedbackWrapper").fadeIn("slow", function () {
     });
 }
