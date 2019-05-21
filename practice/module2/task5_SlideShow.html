@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <style>
+        * {
+            padding: 10px;
+            margin: 10px;
+        }
+
+        body {
+            background-color: cornsilk;
+        }
+
+        .row {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            align-items: center;
+            align-content: space-around;
+        }
+
+        input[type="button"] {
+            width: 100px;
+            height: 50px;
+            margin: auto;
+            margin-left: 10px;
+        }
+    </style>
+
+    <title>slideshow</title>
+</head>
+
+<body>
+    <div class="column">
+        <div class="row">
+            <span>
+                <p>Time interval</p>
+                <input type="text" id="interval" oninput="updateTimeInterval();" value="1000">
+            </span>
+            <span>
+                <p>Image width</p>
+                <input type="text" id="width" oninput="updateSize();" value="300">
+            </span>
+            <span>
+                <p>Image height</p>
+                <input type="text" id="height" oninput="updateSize();" value="200">
+            </span>
+            <input type="button" value="Stop" id="playButton" onclick="startStop();">
+            <input type="button" value="Random" id="modeButton" onclick="changeMode();">
+        </div>
+        <div id="slider">
+
+        </div>
+    </div>
+</body>
+<script>
+    //slideshow
+    let images = [
+        "images/1.jpg",
+        "images/2.jpg",
+        "images/3.jpg",
+    ];
+
+    let currImage = 0;
+
+    let slider = document.getElementById("slider");
+    let interval = document.getElementById("interval");
+    let width = document.getElementById("width");
+    let height = document.getElementById("height");
+    let playButton = document.getElementById("playButton");
+    let modeButton = document.getElementById("modeButton");
+
+    let timer;
+    let timeInterval;
+
+    let working = false;
+    let mode = true;
+
+    function addImage(imageSrc, block) {
+        let newImg = document.createElement("img");
+        newImg.src = imageSrc;
+        newImg.id = "img";
+        block.appendChild(newImg);
+    }
+
+    function updateSize() {
+        let image = document.getElementById("img");
+        image.width = Number(width.value);
+        image.height = Number(height.value);
+    }
+
+    function updateTimeInterval() {
+        timeInterval = Number(interval.value);
+        clearTimeout(timer);
+        if (working)
+            startSlider();
+    }
+
+    function setSize(image, width, height) {
+        image.width = width;
+        image.height = height;
+    }
+
+    function getRandomArbitrary(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+    function nextImage() {
+        let imgCount = images.length;
+        if (mode) {
+            if (currImage + 1 >= imgCount) {
+                currImage = 0;
+            }
+            else currImage++;
+        }
+        else {
+            let newVal = currImage;
+            while (newVal == currImage)
+                newVal = getRandomArbitrary(0, images.length);
+            currImage = newVal;
+        }
+        let img = document.getElementById("img");
+        img.src = images[currImage];
+    }
+
+
+    function startSlider() {
+        timer = setTimeout(function () {
+            nextImage();
+            startSlider();
+        }, timeInterval);
+    }
+
+    function stopSlider() {
+        clearTimeout(timer);
+        console.log(timer);
+    }
+
+    function startStop() {
+        if (working) {
+            stopSlider();
+            playButton.value = "Play";
+        }
+        else {
+            startSlider();
+            playButton.value = "Stop";
+        }
+        working = !working;
+    }
+
+    function changeMode() {
+        if (mode) {
+            modeButton.value = "Cyclic";
+        }
+        else {
+            modeButton.value = "Random";
+        }
+        mode = !mode;
+    }
+
+    addImage(images[0], slider);
+
+    window.onload = function () {
+        updateSize();
+        updateTimeInterval();
+
+        startSlider();
+        working = true;
+    }
+</script>
+
+</html>
